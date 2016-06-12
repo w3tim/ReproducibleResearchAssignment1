@@ -1,12 +1,11 @@
-Reproducible Research assignment 1
-==================================
+# Reproducible Research: Peer Assessment 1
 
 ##Introduction
 This project uses data taken from a personal activity monitoring device. The 
 device collects data at 5 minute intervals throughout the day. Here take a 
 brief look at the data that has been collected and some basic patterns.
 
-##Data
+##Loading and preprocessing the data
 The data is from the activity monitor of one, anonymous individual over a 
 period of two months (October & November, 2012). It is recorded as the number 
 of steps done in 5-minute intervals each day. The dataset is stored as a CSV 
@@ -82,9 +81,7 @@ intervalMeans <- aggregate(activityData$steps,
 names(intervalMeans) <- c("interval", "intervalmean")
 ```
 
-##Exploratory Analysis
-
-###What is the mean total number of steps taken per day?
+##What is the mean total number of steps taken per day?
 We first look at the number of steps done each day.
 
 ```r
@@ -109,7 +106,7 @@ summary(dailySteps$totalsteps)
 ##      41    8841   10760   10770   13290   21190       8
 ```
 
-###What is the average daily activity pattern?
+##What is the average daily activity pattern?
 To look at the average pattern of activity in a day, we plot the a time series 
 showing the mean value of each 5-minute interval for each interval.
 
@@ -145,7 +142,7 @@ intervalMeans[which.max(intervalMeans$intervalmean),]$interval
 ## [1] 835
 ```
 
-###Imputing missing values
+##Imputing missing values
 In the raw data, the steps variable contains NAs which may introduce bias.
 
 ```r
@@ -175,7 +172,7 @@ dailyStepsImp <- aggregate(activityDataImp$steps,
 names(dailyStepsImp) <- c("date", "totalsteps")
 ```
 
-####What is the impact of imputing missing data?
+###What is the impact of imputing missing data?
 To see if this has any affect on the overall distribution of totals data we can 
 compare the original histogram with the histogram including the imputed values. 
 
@@ -218,7 +215,7 @@ summary(dailyStepsImp$totalsteps)
 ##      41    9819   10760   10770   12810   21190
 ```
 
-###Are there differences in activity patterns between weekdays and weekends?
+##Are there differences in activity patterns between weekdays and weekends?
 As behaviours may be different during the working week to the weekend, it might 
 be interesting to look at the difference in average 5-minute interval steps 
 for weekdays and weekend days for comparison.
